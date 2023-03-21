@@ -1,29 +1,13 @@
-<script>
-  import { createMachine, assign } from "xstate";
-  import { useMachine } from "$lib/useMachine";
-
-  const toggleMachine = createMachine({
-    id: "toggle",
-    initial: "inactive",
-    context: {
-      count: 0,
-    },
-    states: {
-      inactive: {
-        on: { TOGGLE: "active" },
-      },
-      active: {
-        entry: assign({ count: (ctx) => ctx.count + 1 }),
-        on: { TOGGLE: "inactive" },
-      },
-    },
-    predictableActionArguments: true,
-  });
+<script>  
+  import { toggleMachine } from "$lib/toggleMachine";
+  import { useMachine } from '@xstate/svelte';
+  import { useMachine2 } from "$lib/useMachine";
 
   const { state, send } = useMachine(toggleMachine);
 
   $: active = $state.matches("active");
   $: count = $state.context.count;
+//   $: count = $state.context?.count;
 </script>
 
 <main>
