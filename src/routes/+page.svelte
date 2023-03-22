@@ -1,13 +1,11 @@
 <script>  
   import { toggleMachine } from "$lib/toggleMachine";
   import { useMachine } from '@xstate/svelte';
-  import { useMachine2 } from "$lib/useMachine";
 
   const { state, send } = useMachine(toggleMachine);
 
   $: active = $state.matches("active");
   $: count = $state.context.count;
-//   $: count = $state.context?.count;
 </script>
 
 <main>
