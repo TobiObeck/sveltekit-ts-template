@@ -1,6 +1,16 @@
 import { createMachine, assign } from "xstate";
 
+const schema = {
+  context: {} as { count: number },
+  events: {} as
+    | {
+        type: 'TOGGLE';
+      }
+};
+
 export const toggleMachine = createMachine({
+  tsTypes: {} as import("./toggleMachine.typegen").Typegen0,
+  schema,
   id: "toggle",
   initial: "inactive",
   context: {
