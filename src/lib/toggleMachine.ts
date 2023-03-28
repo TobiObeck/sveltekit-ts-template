@@ -9,6 +9,7 @@ const schema = {
 };
 
 export const toggleMachine = createMachine({
+  // details about typegen: https://stately.ai/docs/xstate/typescript/typegen
   tsTypes: {} as import("./toggleMachine.typegen").Typegen0,
   schema,
   id: "toggle",
